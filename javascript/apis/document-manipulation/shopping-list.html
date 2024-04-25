@@ -26,12 +26,35 @@
       <button>Add item</button>
     </div>
 
-    <ul>
+    <ul id="shoppingList">
 
     </ul>
 
     <script>
+      let shoppingList = document.querySelector("ul");
+      let inputText = document.querySelector("input");
+      let inputButton = document.querySelector("button");
 
+      inputButton.addEventListener("click", () => {
+
+        let inputValue = inputText.value;
+        inputText.value = '';
+
+        const listItem = document.createElement("li");
+        listItem.setAttribute("id", inputValue)
+        const listItemSpan = document.createElement("span")
+        const listItemButton = document.createElement("button")
+        listItemSpan.textContent = inputValue;
+        listItemButton.textContent = "Delete";
+        listItem.appendChild(listItemSpan);
+        listItem.appendChild(listItemButton);
+        shoppingList.appendChild(listItem);
+        
+        
+        listItemButton.onclick = () => listItem.remove();
+
+
+      });
     </script>
   </body>
 </html>
